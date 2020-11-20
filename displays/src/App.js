@@ -5,7 +5,7 @@ import FilterControls from './FilterControls'
 
 
 
-//const reviewsAPI = 'http://localhost:3001/reviews'
+const reviewsAPI = 'http://localhost:3001/reviews'
 
 class App extends React.Component {
   constructor (props){
@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state ={
       reviews: [],
       locations: [],
+      allReviews: [],
     }
   }
 
@@ -21,9 +22,27 @@ class App extends React.Component {
   }
 
   async getData(){
+    const review = await fetch(reviewsAPI)
 
+    const json = review.json()
+    let locations = []
+    await json.forEach(element => {
+      if(!location.includes(element.location)){
+        locations.push(element.location)
+      }
+    });
+    this.setState(allReviews: json, reviews: json, locations: locations.sort()})
   }
 
+  locationChange = (e) => {
+    let location = e.target.value
+    if(locations === "Display All"){
+      this.setState({reviews: this.state.allReviews})
+      }else{
+        let filterReviews = this.state.allReviews.filter((reviews) =>
+        reviews.location === location)
+      }
+  }
 
 
   render(){
