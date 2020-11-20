@@ -27,20 +27,21 @@ class App extends React.Component {
     const json = review.json()
     let locations = []
     await json.forEach(element => {
-      if(!location.includes(element.location)){
+      if(!locations.includes(element.location)){
         locations.push(element.location)
       }
     });
-    this.setState(allReviews: json, reviews: json, locations: locations.sort()})
+    this.setState({allReviews: json, reviews: json, locations: locations.sort()})
   }
 
   locationChange = (e) => {
     let location = e.target.value
-    if(locations === "Display All"){
+    if(location === "Display All"){
       this.setState({reviews: this.state.allReviews})
       }else{
-        let filterReviews = this.state.allReviews.filter((reviews) =>
+        let filteredReviews = this.state.allReviews.filter((reviews) =>
         reviews.location === location)
+        this.setState({reviews: filteredReviews})
       }
   }
 
@@ -48,8 +49,8 @@ class App extends React.Component {
   render(){
     return (
       <div className="App-header">
-        <button onClick={this.addReview}>Add a New Review</button>
-        <span>{this.state.addUserResponse.message}</span>
+        <button onClick={this.displayReview}>Add a New Review</button>
+        <span>{this.state.displayReviewResponse.message}</span>
         <FilterControls locations={this.state.locations} onLocationChange={this.locationChange}/>
         <ReviewsDisplay reviewList={this.state.reviews}/>
       </div>
