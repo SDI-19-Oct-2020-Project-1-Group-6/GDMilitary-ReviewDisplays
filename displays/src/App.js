@@ -5,7 +5,7 @@ import ReviewsDisplay from './ReviewsDisplay'
 
 
 
-const reviewsAPI = 'http://localhost:3001/reviews'
+//const reviewsAPI = 'http://localhost:3001/reviews'
 
 class App extends React.Component {
   constructor (props){
@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   async getData(){
-    fetch('http://jsonplaceholder.typicode.com/users')
+    fetch('http://jsonplaceholder.typicode.com/comments')
     .then(res => res.json())
     .then((data) => {
       this.setState({reviews: data})
