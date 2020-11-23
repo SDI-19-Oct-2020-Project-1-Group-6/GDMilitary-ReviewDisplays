@@ -15,7 +15,7 @@ const getReviews = (req, res) => {
         if(error) {
             throw error
         }
-        res.status(200).json(results.rows)
+        response.status(200).json(results.rows)
     })
 }
 
@@ -37,7 +37,7 @@ const getReviewByUnitId = (request, response) => {
       if (error) {
         throw error
       }
-      res.status(201).json('Successfully created a review')
+      response.status(201).json('Successfully created a review')
     })
   }
 

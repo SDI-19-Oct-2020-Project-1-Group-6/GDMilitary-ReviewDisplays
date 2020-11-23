@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
     res.json({info: 'Node.js, Express, and Postgres API'})
 })
 
+//app.get('/reviews', db.getReviews)
+
+app.get('/')
+
 
 
 app.listen(port, () => console.log(`This app is listening at http://localhost:${port}`))
