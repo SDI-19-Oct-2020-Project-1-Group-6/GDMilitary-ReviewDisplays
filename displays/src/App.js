@@ -1,7 +1,7 @@
-import './App.css'
+//import './App.css'
 import React from 'react'
 import ReviewsDisplay from './ReviewsDisplay'
-import FilterControls from './FilterControls'
+
 
 
 
@@ -12,8 +12,6 @@ class App extends React.Component {
     super(props)
     this.state ={
       reviews: [],
-      locations: [],
-      allReviews: [],
     }
   }
 
@@ -22,39 +20,27 @@ class App extends React.Component {
   }
 
   async getData(){
-    const review = await fetch(reviewsAPI)
-
-    const json = review.json()
-    let locations = []
-    await json.forEach(element => {
-      if(!locations.includes(element.location)){
-        locations.push(element.location)
-      }
-    });
-    this.setState({allReviews: json, reviews: json, locations: locations.sort()})
+    fetch('http://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({reviews: data})
+    })
+    .catch(console.log)
   }
 
-  locationChange = (e) => {
-    let location = e.target.value
-    if(location === "Display All"){
-      this.setState({reviews: this.state.allReviews})
-      }else{
-        let filteredReviews = this.state.allReviews.filter((reviews) =>
-        reviews.location === location)
-        this.setState({reviews: filteredReviews})
-      }
-  }
 
 
   render(){
     return (
-      <div className="App-header">
-        <button onClick={this.displayReview}>Add a New Review</button>
-        <span>{this.state.displayReviewResponse.message}</span>
-        <FilterControls locations={this.state.locations} onLocationChange={this.locationChange}/>
-        <ReviewsDisplay reviewList={this.state.reviews}/>
+      <div>
+      <div class="container">
+        <div class="row">
+        <h2>Airman Base Reviews</h2>
+        </div>
       </div>
-     
+      
+      <ReviewsDisplay reviews ={this.state.reviews}/>
+      </div>
     );
   }
   }
