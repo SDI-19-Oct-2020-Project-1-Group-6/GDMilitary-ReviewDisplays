@@ -4,7 +4,7 @@ import ReviewsDisplay from './ReviewsDisplay'
 //import {Container} from 'semantic-ui-react'
 
 
-const reviewsAPI = 'http://localhost:5001/Reviews/unit_id'
+//const reviewsAPI = 'http://localhost:5001/Reviews'
 
 class App extends React.Component {
   constructor (props){
@@ -20,7 +20,7 @@ class App extends React.Component {
 
   async getData(){
     //add back "reviewsAPI" once display is working as needed to test final integration
-    fetch(reviewsAPI)
+    fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
     .then((data) => {
       this.setState({reviews: data})
