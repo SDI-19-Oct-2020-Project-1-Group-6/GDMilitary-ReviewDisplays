@@ -1,11 +1,10 @@
-//import './App.css'
+import './App.css'
 import React from 'react'
 import ReviewsDisplay from './ReviewsDisplay'
+//import {Container} from 'semantic-ui-react'
 
 
-
-
-//const reviewsAPI = 'http://localhost:3001/reviews'
+const reviewsAPI = 'http://localhost:5001/Reviews/unit_id'
 
 class App extends React.Component {
   constructor (props){
@@ -20,7 +19,8 @@ class App extends React.Component {
   }
 
   async getData(){
-    fetch('http://jsonplaceholder.typicode.com/comments')
+    //add back "reviewsAPI" once display is working as needed to test final integration
+    fetch(reviewsAPI)
     .then(res => res.json())
     .then((data) => {
       this.setState({reviews: data})
@@ -32,15 +32,12 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
-      <div class="container">
-        <div class="row">
-        <h2>Airman Base Reviews</h2>
-        </div>
-      </div>
-      
+      // <Container className="container" textAlign="center">
+      <div className="ui container" style={{marginTop : '10px'}}>
+        <h2>Airman Base Reviews</h2>          
       <ReviewsDisplay reviews ={this.state.reviews}/>
       </div>
+
     );
   }
   }

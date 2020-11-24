@@ -1,20 +1,34 @@
 import React from 'react'
 //import Rater from 'react-rater'
+//import {card} from 'semantic-ui-react'
 
-const ReviewsDisplay = ({reviews}) => {
-  return(
+const ReviewsDisplay = ({reviews}) => {  
+  return (
+    reviews.map((reviews) => (
     <div>
-      {reviews.map((reviews) => (
-        <div class="cards">
-          <div class="card">
-              <h5 class="card-title">{reviews.id}</h5>
-                <h6 class="card-text">{reviews.email}</h6>
-                  <h7 class="card-subtitle mb-2 text-muted">{reviews.body}</h7>
-            </div>
-          </div>
-        ))}
-    </div>
+      <span>Unit ID:{reviews.unit_id} </span><br/>
+      <span>Name: {reviews.person_id}</span><br/>
+      <span>Positive Reviews: {reviews.pros}</span><br/>
+      <span>Negative Reviews: {reviews.cons}</span><br/>
+      <span>Ratings: {reviews.reviewStars}</span><br/>      
+  </div>
+    )
    )
-};
+  );
+}
 
-export default ReviewsDisplay
+export default ReviewsDisplay;
+
+
+
+{/* <div class="ui card">
+      {reviews.map((reviews) => (
+         
+          <div class="content">{
+              <div class="header">{reviews.userId}</div>
+                <div class="meta">{reviews.id}</div>
+                  <div class="description">{reviews.title}
+                  </div>
+            </div>
+         </div>
+        ))} */}
