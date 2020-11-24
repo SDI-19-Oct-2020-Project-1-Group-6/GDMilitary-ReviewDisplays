@@ -8,7 +8,7 @@ import StarRatingComponent from 'react-star-rating-component'
 
 //const reviewsAPI = 'http://localhost:5001/Reviews'
 
-class App extends React.Component {
+class Reviews extends React.Component {
   constructor (props){
     super(props)
     this.state ={
@@ -23,7 +23,7 @@ class App extends React.Component {
   async getData(){
     //add back "reviewsAPI" once display is working as needed to test final integration
     // https://jsonplaceholder.typicode.com/comments
-    fetch(`http://localhost:5001/reviews`)
+    fetch(`http://localhost:5001/reviews/${this.props.unit}`)
     .then(res => res.json())
     .then((data) => {
       this.setState({reviews: data})
@@ -41,11 +41,11 @@ class App extends React.Component {
       <Card.Group itemsPerRow={2}>
         {this.state.reviews.map((data) => (
           <Card>
-            <Card.Content header="Unit Number" description={data.unit_id}/>
+            <Card.Content header="Reviewer" description={data.person_id}/>
             <Card.Content header="Pros" description={data.pros}/> 
             <Card.Content header="Cons" description={data.cons}/>
             <Card.Content extra>
-            <StarRatingComponent name="rate2" starCount={5} value={4} editing={false} />
+            <StarRatingComponent name="rate2" starCount={5} value={data.reviewStars} editing={false} />
             </Card.Content>
           </Card>
         ))}
@@ -58,4 +58,4 @@ class App extends React.Component {
   }
 
 
-export default App;
+export default Reviews;
