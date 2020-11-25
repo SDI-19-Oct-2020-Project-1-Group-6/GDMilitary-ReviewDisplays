@@ -51,7 +51,7 @@ class Reviews extends React.Component {
             </Card.Content>
           </Card>
         )):<Card>No Reviews Found</Card>}
-      </Card.Group>)
+      </Card.Group>
   </div>
 
       </div>
