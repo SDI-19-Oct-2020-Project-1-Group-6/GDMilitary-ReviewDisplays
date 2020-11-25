@@ -47,7 +47,7 @@ class Reviews extends React.Component {
             <Card.Content header="Pros" description={data.pros}/> 
             <Card.Content header="Cons" description={data.cons}/>
             <Card.Content extra>
-            <StarRatingComponent name="rate2" starCount={5} value={data.reviewStars} editing={false} />
+            <StarRatingComponent name="rate2" starCount={5} value={data.reviewstars} editing={false} />
             </Card.Content>
           </Card>
         )):<Card>No Reviews Found</Card>}
