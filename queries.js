@@ -26,7 +26,6 @@ const getReviewByUnitId = (request, response) => {
       if (error) {
         throw error
       }
-      console.log(results)
       response.status(200).json(results.rows)
     })
   }
