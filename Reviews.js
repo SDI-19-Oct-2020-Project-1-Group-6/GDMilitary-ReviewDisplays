@@ -38,8 +38,10 @@ class Reviews extends React.Component {
       <div className="ui container" style={{marginTop : '10px'}}>
         <h2>Airman Base Reviews</h2>           
       <div>
+      
       <Card.Group itemsPerRow={2}>
-        {this.state.reviews.map((data) => (
+      {(this.state.reviews.length>0)?
+        this.state.reviews.map((data) => (
           <Card>
             <Card.Content header="Reviewer" description={data.person_id}/>
             <Card.Content header="Pros" description={data.pros}/> 
@@ -48,8 +50,8 @@ class Reviews extends React.Component {
             <StarRatingComponent name="rate2" starCount={5} value={data.reviewStars} editing={false} />
             </Card.Content>
           </Card>
-        ))}
-      </Card.Group>    
+        )):<Card>No Reviews Found</Card>}
+      </Card.Group>)
   </div>
 
       </div>
